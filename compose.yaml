@@ -1,0 +1,29 @@
+services:
+  db:
+    image: mysql:8.0  
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS:-projeto} 
+      MYSQL_DATABASE: ${DB_NAME:-projeto} 
+      MYSQL_USER: ${DB_USER:-projeto}
+      MYSQL_PASSWORD: ${DB_PASS:-projeto}
+    ports: 
+      - "3307:3306"
+    env_file:
+      - ./.env  
+
+  web:
+    image: leonardomp3/projeto_cloud:latest  
+    ports: 
+      - "8000:8000"  
+    depends_on:
+      - db
+    environment:
+      - USER=${DB_USER:-projeto}
+      - PASSWORD=${DB_PASS:-projeto}
+      - HOST=db
+      - PORT=3306
+      - DATABASE_NAME=${DB_NAME:-projeto}
+      - SECRET_KEY=${SECRET_KEY:-projeto}
+    env_file:
+      - ./.env  
+    restart: always

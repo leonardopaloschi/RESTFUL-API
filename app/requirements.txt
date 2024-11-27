@@ -1,0 +1,10 @@
+fastapi
+sqlalchemy
+pydantic
+python-dotenv
+requests
+bcrypt
+python-jose
+mysql-connector-python
+uvicorn
+pydantic[email]

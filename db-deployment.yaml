@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+      - name: db
+        image: mysql:8.0
+        ports:
+        - containerPort: 3306
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: "senhadoroot"  # Senha do root
+          - name: MYSQL_DATABASE
+            value: "Cloudb"  # Nome do banco de dados
+          - name: MYSQL_USER
+            value: "tester1"  # Usuário do banco
+          - name: MYSQL_PASSWORD
+            value: "senha1234"  # Senha do banco
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db-service
+spec:
+  ports:
+    - port: 3306
+      targetPort: 3306
+  selector:
+    app: db

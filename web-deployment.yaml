@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: web
+        image: leonardomp3/projeto_cloud:latest
+        ports:
+        - containerPort: 8000
+        env:
+          - name: USER
+            value: "tester1"  # Usuário do banco
+          - name: PASSWORD
+            value: "senha1234"  # Senha do banco
+          - name: HOST
+            value: "db"  # Nome do serviço do banco
+          - name: PORT
+            value: "3306"  # Porta do banco
+          - name: DATABASE_NAME
+            value: "Cloudb"  # Nome do banco
+          - name: SECRET_KEY
+            value: "chavesecretademais"  # Chave secreta para a aplicação
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+spec:
+  ports:
+    - port: 8000
+      targetPort: 8000
+  selector:
+    app: web
