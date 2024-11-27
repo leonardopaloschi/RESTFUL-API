@@ -55,8 +55,8 @@ services:
     restart: always
 ```
 
-### 2. Configurar .env (opcional):
-Para a criação das variáveis para o banco de dados e para a secret key, responsável pelo hash da senha, foi usado um .env no formato a seguir para definir cada uma delas. Note que esse passo é opcional, uma vez que no `compose.yaml`, caso não exista um .env, ele vai utilizar os placeholders definidos. Com essa implementação, é possível mudar as informações sem alterar o compose.
+### 2. Configurar .env :
+Para a criação das variáveis para o banco de dados e para a secret key, responsável pelo hash da senha, foi usado um .env no formato a seguir para definir cada uma delas. É só colocar o .env no mesmo diretorio do compose, que deerá seguir esse formato.
 
 ```bash
 DB_USER="qualquer_user"
