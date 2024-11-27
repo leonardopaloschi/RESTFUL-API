@@ -28,8 +28,6 @@ Iremos especificar nosso AWS Access key ID, AWS Secret Access key, a região def
 
 Usando o EKSCTL para criar nossos clusters, digitamos o seguinte comando:
 
-
-Comando para criação do cluster:
 ```bash
 eksctl create cluster --name projeto-cluster --region sa-east-1 --nodes 2 --node-type t3.medium
 ```
