@@ -156,4 +156,4 @@ kubectl apply -f web-deployment.yaml
 
 ![Screenshot *GET /consulta](./imgs/teste-consultar-aws.png)
 
-**Vídeo de demonstração** [AWS deployment]()
+**Vídeo de demonstração** [AWS deployment](https://youtu.be/sKXbEHgBNmY)
